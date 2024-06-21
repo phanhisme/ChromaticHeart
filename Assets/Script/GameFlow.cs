@@ -12,8 +12,7 @@ public class GameFlow : MonoBehaviour
     private bool pressed = false;
     private int pressIndex = 0;
 
-    private int maxPhraseOne = 4;
-    private int maxIndex = 12;
+    private int maxIndex = 15;
 
     public TextMeshProUGUI info;
 
@@ -48,10 +47,38 @@ public class GameFlow : MonoBehaviour
                     text.text = CheckPressIndex();
 
                     PlayerController controller = player.GetComponent<PlayerController>();
-                    if(pressIndex == maxPhraseOne)
+                    
+                    switch (pressIndex)
                     {
-                        info.text = "Press A or D to move";
-                        controller.enabled = true;
+                        case 4:
+                            info.text = "Press A or D to move";
+                            controller.enabled = true;
+                            break;
+
+                        case 5:
+                            info.text = "Press Space to Jump";
+                            break;
+
+                        case 6:
+                            controller.enabled = false;
+                            break;
+
+                        case 8:
+                            info.text = "<size=65%>Beito powers #R2, the lower the power, the harder to navigate the world";
+                            break;
+
+                        case 10:
+                            info.text = "<size=65%>As the power runs low, press Q to recharge";
+                            break;
+
+                        case 13:
+                            controller.enabled = true;
+                            info.text = "Press F to interact";
+                            break;
+
+                        case 15:
+                            info.text = "<size=80%>Press Escape to turn off phone";
+                            break;
                     }
 
                     pressed = false;
@@ -80,26 +107,34 @@ public class GameFlow : MonoBehaviour
                 return "You can also jump with Spacebar!";
 
             case 6:
-                return "Alright, good, you get the basics";
+                return "Alright, good, you get the basics.";
 
             case 7:
                 return "I think you are running out of power, Leth";
-                return "There are some batteries inside your poket.";
-                return "Beitos are rarely produced these day, ";
-                return "You should use this wisely";
-                return "I would love to spend more time with you, Sis";
 
             case 8:
-                return "But you have to leave this place immediately.";
+                return "There are some batteries inside your poket.";
 
             case 9:
-                return "Interact with the panel in front of you...";
+                return "Beitos are rarely produced these day, ";
 
             case 10:
-                return "and the door will open for you.";
+                return "You should use this wisely";
 
             case 11:
-                return "";
+                return "I would love to spend more time with you, Sis";
+
+            case 12:
+                return "But you have to leave this place immediately.";
+
+            case 13:
+                return "Interact with the panel in front of you...";
+
+            case 14:
+                return "and the door will open for you.";
+
+            case 15:
+                return "I will wait for you at the main entrance.";
 
             default:
                 return "";
